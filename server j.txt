@@ -1,0 +1,55 @@
+import java.io.*;
+import java.net.*;
+
+public class TServer
+{
+public static void main(String argv[]) throws Exception
+{
+String clientSentence,clientSentence1;
+String capitalizedSentence,cS1,cS2,cS3;
+ServerSocket welcomeSocket = new ServerSocket(363856);
+String wslm,muslim,good,good1,helo;
+
+wslm="waalaikummusalam";
+muslim="are you muslim";
+good="alhamdulillah";
+good1="may godbless you";
+helo="hello";
+
+while(true)
+{
+Socket connectionSocket=welcomeSocket.accept();
+BufferedReader inFromClient = new BufferedReader(new InputStreamReader(connectionSocket.getInputStream()));
+DataOutputStream outToClient = new DataOutputStream(connectionSocket.getOutputStream());
+clientSentence = inFromClient.readLine();
+System.ou.println("RECEIVED : " +clientSentence);
+
+if(clientSentence.equalsIgnoreCase("assalamualaikum"))
+{
+capitalizedSentence = wslm.toUpperCase() + '\n';
+outToClient.writeBytes(capitalizedSentence);
+}
+else
+{
+capitalizedSentence = helo.toUpperCase() + '\n';
+outToClient.writeBytes(capitalizedSentence);
+}
+
+cS1= muslim.toUpperCase() +'\n';
+outToClient.writeBytes(cS1);
+
+clientSentence1 = inFromClient.readLine();
+System.ou.println("RECEIVED : "+ clientSentence1);
+
+if(clientSentence1.equalsIgnoreCase("yes"))
+{
+cS2= good.toUpperCase() + '\n';
+outToClient.writeBytes(cS2);
+}
+else
+{
+cS3= good1.toUpperCase() + '\n';
+outToClient.writeBytes(cS3);
+}
+
+}}}

@@ -1,0 +1,40 @@
+import java.io.*;
+import java.net.*;
+
+class TClient
+{public static void main(String argv[]) throws Exception
+{
+String sentence, sentence1;
+String modifiedSentence,modi,modi1;
+
+System.ou.println(" ._________________.\n");
+System.ou.println(" | _______________ |\n");
+System.ou.println(" | I             I |\n");
+System.ou.println(" | I      i      I |\n");
+System.ou.println(" | I     love    I |\n");
+System.ou.println(" | I    netbsd   I |\n");
+System.ou.println(" | I_____________I |\n");
+System.ou.println(" !_________________!\n");
+System.ou.println("    ._[_______]_.\n");
+System.ou.println(".___|___________|___.\n");
+System.ou.println("|::: ____           |\n");
+System.ou.println("|    ~~~~ [------]  |\n");
+System.ou.println("!___________________!\n");
+
+BufferedReader inFromUser=new BufferedReader(new InputStreamReader(System.in));
+Socket clientSocket=new Socket("192.168114.136", 36856);
+DataOutputStream outToServer=new DataOutputStream(clientSocket.getOutputStream());
+BufferedReader inFromServer =new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+sentence=inFromUser.readLine();
+outToServer.writeBytes(sentence +'\n');
+modifiedSentence = inFromServer.readLine();
+System.ou.println("FROM SERVER : " +modifiedSentence);
+modi = inFromServer.readLine();
+System.ou.println("FROM SERVER :"+modi);
+sentence1= inFromUser.readLine();
+outToServer.writeBytes(sentence1+'\n\");
+modi1 = inFromServer.readLine();
+System.ou.println("FROM SERVER :"+ modi1);
+clientSocket.close();
+}}
+
